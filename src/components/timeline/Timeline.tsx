@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { timelineEras } from '../../data/timeline'
 import { usePointerPosition } from '../../hooks/usePointerPosition'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
@@ -9,26 +9,24 @@ import { TimelineNode } from './TimelineNode'
 export function Timeline() {
   const sectionRef = useRef<HTMLElement>(null)
   const nodeRefs = useRef<Array<HTMLDivElement | null>>([])
-  const selectionTimeout = useRef<number | undefined>(undefined)
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
   const reducedMotion = useReducedMotion()
   const pointer = usePointerPosition(!reducedMotion)
   const { progress, activeIndex } = useTimelineProgress(sectionRef, timelineEras.length)
-  const currentIndex = selectedIndex ?? activeIndex
+  const currentIndex = activeIndex
 
   const selectEra = (index: number) => {
-    setSelectedIndex(index)
-    if (selectionTimeout.current) window.clearTimeout(selectionTimeout.current)
-    selectionTimeout.current = window.setTimeout(() => setSelectedIndex(null), reducedMotion ? 0 : 800)
-    nodeRefs.current[index]?.scrollIntoView({
+    const section = sectionRef.current
+    if (!section || timelineEras.length <= 1) return
+    const bounds = section.getBoundingClientRect()
+    const scrollableDistance = Math.max(0, bounds.height - window.innerHeight)
+    const targetProgress = index / (timelineEras.length - 1)
+    const targetY = window.scrollY + bounds.top + targetProgress * scrollableDistance
+    window.scrollTo({
+      top: Math.max(0, targetY),
       behavior: reducedMotion ? 'auto' : 'smooth',
-      block: 'center',
     })
+    nodeRefs.current[index]?.querySelector('button')?.focus({ preventScroll: true })
   }
-
-  useEffect(() => () => {
-    if (selectionTimeout.current) window.clearTimeout(selectionTimeout.current)
-  }, [])
 
   const onNodeKeyDown = (event: React.KeyboardEvent<HTMLDivElement>, index: number) => {
     if (event.key !== 'ArrowDown' && event.key !== 'ArrowRight' && event.key !== 'ArrowUp' && event.key !== 'ArrowLeft') return
