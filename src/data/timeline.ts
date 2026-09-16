@@ -1,0 +1,34 @@
+import type { TimelineEra } from '../types/research'
+
+export const timelineEras: TimelineEra[] = [
+  {
+    id: 'early-programming',
+    title: 'Early programming',
+    period: 'TODO: VERIFY PERIOD',
+    description: 'Developers expressed instructions close to the machine, with limited abstraction and high attention to operational detail.',
+    technologicalShift: 'Machine-oriented instructions',
+    productivityConcept: 'Manual effort and task completion — historical interpretation requiring source verification.',
+    tags: ['programming', 'abstraction'],
+    sourceIds: [],
+  },
+  {
+    id: 'productivity-question',
+    title: 'The productivity question',
+    period: 'Across the history of software',
+    description: 'As software systems and teams grew, counting visible output became an increasingly incomplete way to understand engineering work.',
+    technologicalShift: 'From individual output to socio-technical systems',
+    productivityConcept: 'A multidimensional concept involving outcomes, quality, flow, and well-being.',
+    tags: ['measurement', 'developer-experience'],
+    sourceIds: [],
+  },
+  {
+    id: 'ai-assisted-development',
+    title: 'AI-assisted development',
+    period: 'Contemporary — exact chronology requires verification',
+    description: 'Coding tools now support activities including generation, explanation, search, review, and workflow orchestration.',
+    technologicalShift: 'From writing code directly to collaborating with generative systems',
+    productivityConcept: 'An open research question: how should contribution and outcomes be measured when work is shared with AI?',
+    tags: ['AI', 'research'],
+    sourceIds: [],
+  },
+]
