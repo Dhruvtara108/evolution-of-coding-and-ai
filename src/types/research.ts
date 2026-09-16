@@ -33,6 +33,41 @@ export interface ProductivityFramework {
   sourceIds: string[]
 }
 
+export type ProductivityMetricCategory = 'activity' | 'output' | 'outcome'
+
+export interface ProductivityMetric {
+  id: string
+  name: string
+  category: ProductivityMetricCategory
+  description: string
+  whatItMeasures: string
+  whatItCannotTellUs: string
+  limitations: string
+  sourceIds: string[]
+}
+
+export interface ProductivityDimension {
+  id: string
+  name: string
+  shortLabel: string
+  description: string
+  examples: string[]
+  measurementConsiderations: string
+  limitations: string
+  sourceIds: string[]
+}
+
+export interface ProductivityFrameworkDetail {
+  id: string
+  name: string
+  description: string
+  measurementContext: string
+  limitations: string
+  status: ResearchStatus
+  dimensions: ProductivityDimension[]
+  sourceIds: string[]
+}
+
 export interface AIDevelopmentStage {
   id: string
   title: string
