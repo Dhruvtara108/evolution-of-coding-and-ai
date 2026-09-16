@@ -11,6 +11,12 @@ export function FrameworkExplorer({ frameworks }: FrameworkExplorerProps) {
   const [selectedId, setSelectedId] = useState(frameworks[0]?.id ?? '')
   const selected = frameworks.find((framework) => framework.id === selectedId) ?? frameworks[0]
   if (!selected) return null
+  const moveSelection = (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
+    if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return
+    event.preventDefault()
+    const next = event.key === 'ArrowDown' ? (index + 1) % frameworks.length : (index - 1 + frameworks.length) % frameworks.length
+    setSelectedId(frameworks[next].id)
+  }
 
   return (
     <div className="framework-explorer">
@@ -23,6 +29,7 @@ export function FrameworkExplorer({ frameworks }: FrameworkExplorerProps) {
             aria-selected={framework.id === selected.id}
             key={framework.id}
             onClick={() => setSelectedId(framework.id)}
+            onKeyDown={(event) => moveSelection(event, frameworks.indexOf(framework))}
           >
             <span>{framework.name}</span>
             <small>{framework.status === 'verified' ? 'structured' : 'verification pending'}</small>

@@ -11,6 +11,12 @@ export function MetricExplorer({ metrics }: MetricExplorerProps) {
   const [selectedId, setSelectedId] = useState(metrics[0]?.id ?? '')
   const selected = metrics.find((metric) => metric.id === selectedId) ?? metrics[0]
   if (!selected) return null
+  const moveSelection = (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
+    if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return
+    event.preventDefault()
+    const next = event.key === 'ArrowDown' ? (index + 1) % metrics.length : (index - 1 + metrics.length) % metrics.length
+    setSelectedId(metrics[next].id)
+  }
 
   return (
     <div className="metric-lab">
@@ -23,6 +29,7 @@ export function MetricExplorer({ metrics }: MetricExplorerProps) {
             aria-selected={metric.id === selected.id}
             key={metric.id}
             onClick={() => setSelectedId(metric.id)}
+            onKeyDown={(event) => moveSelection(event, metrics.indexOf(metric))}
           >
             <span>{metric.name}</span>
             <small>{metric.category}</small>
