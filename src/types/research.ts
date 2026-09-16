@@ -18,6 +18,9 @@ export interface TimelineEra {
   description: string
   technologicalShift: string
   productivityConcept: string
+  technologies?: string[]
+  developmentPractice?: string
+  visualState?: 'machine' | 'structured' | 'abstract' | 'collaborative' | 'automated' | 'assisted'
   tags: string[]
   sourceIds: string[]
 }
