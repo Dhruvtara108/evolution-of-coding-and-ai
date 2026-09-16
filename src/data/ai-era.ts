@@ -1,20 +1,29 @@
-import type { AIDevelopmentStage } from '../types/research'
+import type { AICapability, AIDevelopmentStage, AIEvidence } from '../types/research'
 
 export const aiDevelopmentStages: AIDevelopmentStage[] = [
-  {
-    id: 'autocomplete',
-    title: 'Autocomplete',
-    description: 'Suggestions appear within an existing coding workflow.',
-    humanWork: 'Intent, selection, review, and integration',
-    aiWork: 'Candidate text generation',
-    status: 'synthesis',
-  },
-  {
-    id: 'agentic-workflows',
-    title: 'Agentic workflows',
-    description: 'TODO: VERIFY CAPABILITIES AND RESEARCH EVIDENCE for this evolving category.',
-    humanWork: 'Goal setting, oversight, validation, and responsibility',
-    aiWork: 'Potentially multi-step task execution',
-    status: 'needs-verification',
-  },
+  { id: 'traditional-programming', title: 'Traditional programming', description: 'Human writes implementation details directly.', humanWork: 'Intent, design, implementation, review, and responsibility', aiWork: 'No AI role assumed in this conceptual baseline', uncertainty: 'This is a conceptual baseline, not a claim about every historical workflow.', verification: 'TODO: VERIFY SOURCE for historical framing.', capabilityLevel: 'limited', status: 'synthesis' },
+  { id: 'autocomplete', title: 'Autocomplete', description: 'Candidate text appears within an existing coding workflow.', humanWork: 'Intent, selection, review, and integration', aiWork: 'Candidate completion generation', uncertainty: 'The system may suggest text that is irrelevant or incorrect.', verification: 'Human review and tests remain required.', capabilityLevel: 'limited', status: 'synthesis' },
+  { id: 'ai-assistance', title: 'AI-assisted completion', description: 'Suggestions can extend beyond a single local completion.', humanWork: 'Task framing, selection, editing, and validation', aiWork: 'Contextual candidate generation', uncertainty: 'Context window and system behavior vary by tool and environment.', verification: 'TODO: VERIFY SOURCE for product-specific capabilities.', capabilityLevel: 'moderate', status: 'needs-verification' },
+  { id: 'pair-programming', title: 'AI pair programming', description: 'A conversational partner helps explain, draft, and revise code.', humanWork: 'Direction, judgment, review, and responsibility', aiWork: 'Explanation, drafting, and transformation suggestions', uncertainty: 'Fluent explanations do not establish correctness.', verification: 'Review against requirements and executable tests.', capabilityLevel: 'moderate', status: 'synthesis' },
+  { id: 'chat-coding', title: 'Chat-based coding', description: 'Developers describe a task and iterate through generated changes.', humanWork: 'Specification, feedback, integration, and debugging', aiWork: 'Proposed code, explanations, and revisions', uncertainty: 'Generated output can omit hidden constraints.', verification: 'Run tests and inspect the resulting change in context.', capabilityLevel: 'moderate', status: 'synthesis' },
+  { id: 'repository-aware', title: 'Repository-aware assistance', description: 'Assistance is shaped by a larger codebase context.', humanWork: 'System understanding, scoping, and verification', aiWork: 'Context retrieval and change proposals', uncertainty: 'Repository context can be incomplete, stale, or misinterpreted.', verification: 'Check references, boundaries, tests, and side effects.', capabilityLevel: 'expanded', status: 'needs-verification' },
+  { id: 'coding-agents', title: 'Coding agents', description: 'A system may coordinate multiple steps toward a defined coding task.', humanWork: 'Goal setting, oversight, approval, and responsibility', aiWork: 'Potentially multi-step planning and execution', uncertainty: 'The exact degree of execution depends on system permissions and workflow design.', verification: 'Sandboxing, review, tests, and explicit human approval.', capabilityLevel: 'context-dependent', status: 'needs-verification' },
+  { id: 'agentic-workflow', title: 'Agentic workflow', description: 'AI participation extends across an evolving software workflow.', humanWork: 'Requirements, governance, judgment, and accountability', aiWork: 'Potentially coordinated generation, tool use, and iteration', uncertainty: 'This is an evolving category, not a settled historical taxonomy.', verification: 'TODO: VERIFY SOURCE for each specific system and claim.', capabilityLevel: 'context-dependent', status: 'needs-verification' },
 ]
+
+export const aiCapabilities: AICapability[] = [
+  { id: 'completion', name: 'Code completion', description: 'Suggesting likely code or text in an active editing context.', state: 'limited', caveat: 'Scope and reliability depend on context and system.' },
+  { id: 'generation', name: 'Code generation', description: 'Producing a proposed implementation from a description.', state: 'moderate', caveat: 'Generated code still requires evaluation.' },
+  { id: 'explanation', name: 'Code explanation', description: 'Describing code, patterns, or possible behavior.', state: 'moderate', caveat: 'An explanation can be plausible without being correct.' },
+  { id: 'transformation', name: 'Code transformation', description: 'Proposing edits, refactors, or translations.', state: 'moderate', caveat: 'Side effects and requirements must be checked.' },
+  { id: 'repository-context', name: 'Repository context', description: 'Using more than one local snippet to inform assistance.', state: 'context-dependent', caveat: 'Available context varies by tool, configuration, and permissions.' },
+  { id: 'testing', name: 'Testing assistance', description: 'Drafting or explaining tests as part of a workflow.', state: 'context-dependent', caveat: 'Test presence does not establish test adequacy.' },
+  { id: 'tool-execution', name: 'Tool execution', description: 'Interacting with tools when a system and workflow permit it.', state: 'context-dependent', caveat: 'Permissions, safety controls, and human oversight are material.' },
+  { id: 'multi-step', name: 'Multi-step task execution', description: 'Coordinating several proposed actions toward a goal.', state: 'context-dependent', caveat: 'TODO: VERIFY SOURCE for system-specific claims.' },
+]
+
+export const aiEvidence: AIEvidence[] = [
+  { id: 'evidence-placeholder', title: 'Evidence explorer foundation', sourceId: 'TODO: VERIFY SOURCE', claim: 'No AI productivity finding is asserted in this milestone.', context: 'The interface is prepared for sourced evidence cards.', studyType: 'literature-review', population: 'TODO: VERIFY SOURCE', task: 'TODO: VERIFY SOURCE', finding: 'TODO: VERIFY SOURCE', limitations: 'This placeholder is not an empirical result.', verificationStatus: 'needs-verification' },
+]
+
+export const aiWorkflowSteps = ['Human intent', 'AI generation', 'Human review', 'Testing', 'Debugging', 'Iteration', 'Deployment']

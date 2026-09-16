@@ -37,3 +37,37 @@ class ProductivityFrameworkResponse(BaseModel):
     status: ResearchStatus
     dimensions: list[ProductivityDimensionResponse]
     source_ids: list[str]
+
+
+class AIStageResponse(BaseModel):
+    id: str
+    title: str
+    description: str
+    human_work: str
+    ai_work: str
+    uncertainty: str
+    verification: str
+    capability_level: Literal["limited", "moderate", "expanded", "context-dependent"]
+    status: ResearchStatus
+
+
+class AICapabilityResponse(BaseModel):
+    id: str
+    name: str
+    description: str
+    state: Literal["limited", "moderate", "expanded", "context-dependent"]
+    caveat: str
+
+
+class AIEvidenceResponse(BaseModel):
+    id: str
+    title: str
+    source_id: str
+    claim: str
+    context: str
+    study_type: str
+    population: str
+    task: str
+    finding: str
+    limitations: str
+    verification_status: ResearchStatus

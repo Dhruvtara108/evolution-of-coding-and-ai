@@ -74,5 +74,30 @@ export interface AIDevelopmentStage {
   description: string
   humanWork: string
   aiWork: string
+  uncertainty: string
+  verification: string
+  capabilityLevel: 'limited' | 'moderate' | 'expanded' | 'context-dependent'
   status: ResearchStatus
+}
+
+export interface AICapability {
+  id: string
+  name: string
+  description: string
+  state: 'limited' | 'moderate' | 'expanded' | 'context-dependent'
+  caveat: string
+}
+
+export interface AIEvidence {
+  id: string
+  title: string
+  sourceId: string
+  claim: string
+  context: string
+  studyType: 'controlled-experiment' | 'observational-study' | 'survey' | 'case-study' | 'benchmark' | 'industry-report' | 'vendor-report' | 'literature-review'
+  population: string
+  task: string
+  finding: string
+  limitations: string
+  verificationStatus: ResearchStatus
 }

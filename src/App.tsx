@@ -1,7 +1,7 @@
 import { ArrowDown, BookOpen, Menu, MoveRight } from 'lucide-react'
+import { AIEraExperience } from './components/ai/AIEraExperience'
 import { ProductivityExperience } from './components/productivity/ProductivityExperience'
 import { Timeline } from './components/timeline/Timeline'
-import { aiDevelopmentStages } from './data/ai-era'
 import './styles/index.css'
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
         </section>
         <Timeline />
         <ProductivityExperience />
-        <section id="ai-era" className="ai-section section-frame" aria-labelledby="ai-title"><div className="section-heading"><div><div className="section-index">04 / AI-ASSISTED DEVELOPMENT</div><h2 id="ai-title">The developer remains in the loop.</h2></div><p>Capabilities and claims in this section will be tied to evidence as the research layer grows.</p></div><div className="ai-flow">{aiDevelopmentStages.map((stage, index) => <div className="ai-stage" key={stage.id}><span className="stage-index">0{index + 1}</span><h3>{stage.title}</h3><p>{stage.description}</p><span className={`status status-${stage.status}`}>{stage.status.replace('-', ' ')}</span></div>)}</div></section>
+        <AIEraExperience />
         <section id="questions" className="questions-section section-frame" aria-labelledby="questions-title"><div className="section-index">05 / OPEN QUESTIONS</div><div className="question-layout"><h2 id="questions-title">The useful conclusion is still a question.</h2><div><p>How should engineering teams measure quality, learning, flow, and outcomes when AI performs part of the implementation?</p><a className="text-link" href="mailto:research@example.com">Follow the evidence <BookOpen size={16} /></a></div></div><div className="scroll-cue" aria-hidden="true"><ArrowDown size={16} /> Continue exploring</div></section>
       </main>
       <footer className="footer section-frame"><span>Evolution of Coding &amp; AI</span><span>Research status: foundation phase</span></footer>

@@ -4,6 +4,9 @@ from .schemas import (
     ProductivityDimensionResponse,
     ProductivityFrameworkResponse,
     ProductivityMetricResponse,
+    AICapabilityResponse,
+    AIEvidenceResponse,
+    AIStageResponse,
 )
 
 app = FastAPI(title="Evolution of Coding & AI API", version="0.1.0")
@@ -58,3 +61,23 @@ def productivity_framework(framework_id: str) -> ProductivityFrameworkResponse:
         dimensions=[],
         source_ids=[],
     )
+
+
+@app.get("/api/ai/stages", response_model=list[AIStageResponse])
+def ai_stages() -> list[AIStageResponse]:
+    return []
+
+
+@app.get("/api/ai/capabilities", response_model=list[AICapabilityResponse])
+def ai_capabilities() -> list[AICapabilityResponse]:
+    return []
+
+
+@app.get("/api/ai/evidence", response_model=list[AIEvidenceResponse])
+def ai_evidence() -> list[AIEvidenceResponse]:
+    return []
+
+
+@app.get("/api/ai/workflows")
+def ai_workflows() -> dict[str, list[str]]:
+    return {"steps": []}
