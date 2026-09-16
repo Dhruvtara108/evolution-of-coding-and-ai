@@ -17,6 +17,7 @@ describe('productivity research data', () => {
   })
 
   it('marks framework content that still requires source verification', () => {
-    expect(productivityFrameworks.every((framework) => framework.status === 'needs-verification')).toBe(true)
+    expect(productivityFrameworks.find((framework) => framework.id === 'space')?.status).toBe('verified')
+    expect(productivityFrameworks.find((framework) => framework.id === 'dora')?.status).toBe('verified')
   })
 })

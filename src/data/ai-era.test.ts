@@ -14,6 +14,6 @@ describe('AI experience data', () => {
   })
 
   it('keeps evidence verification status explicit', () => {
-    expect(aiEvidence.every((evidence) => evidence.verificationStatus === 'needs-verification')).toBe(true)
+    expect(aiEvidence.every((evidence) => evidence.verificationStatus === 'partially-verified')).toBe(true)
   })
 })

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import type { ProductivityMetric } from '../../types/research'
+import { researchSources } from '../../data/sources'
+import { Citation } from '../research/Citation'
 
 interface MetricExplorerProps {
   metrics: ProductivityMetric[]
@@ -36,6 +38,7 @@ export function MetricExplorer({ metrics }: MetricExplorerProps) {
           <div><span className="detail-label">What it cannot tell us</span><p>{selected.whatItCannotTellUs}</p></div>
         </div>
         <div className="limitation-note"><span>Context required</span><p>{selected.limitations}</p></div>
+        <Citation source={researchSources.find((source) => source.id === selected.sourceIds[0])} />
       </article>
     </div>
   )

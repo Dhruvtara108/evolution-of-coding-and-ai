@@ -1,6 +1,6 @@
 from typing import Literal
 
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl
 
 
 ResearchStatus = Literal["verified", "needs-verification", "synthesis"]
@@ -71,3 +71,33 @@ class AIEvidenceResponse(BaseModel):
     finding: str
     limitations: str
     verification_status: ResearchStatus
+
+
+class ResearchSourceResponse(BaseModel):
+    id: str
+    title: str
+    authors: list[str]
+    year: int | None = None
+    type: str
+    category: str
+    venue: str | None = None
+    url: HttpUrl | None = None
+    doi: str | None = None
+    publisher: str | None = None
+    verified: bool = False
+    verification_notes: str | None = None
+
+
+class ResearchClaimResponse(BaseModel):
+    id: str
+    statement: str
+    source_id: str
+    evidence_type: str
+    category: str
+    context: str
+    population: str | None = None
+    task: str | None = None
+    finding: str
+    limitations: str
+    verification_status: ResearchStatus
+    last_verified: str | None = None

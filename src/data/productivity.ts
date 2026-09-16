@@ -9,7 +9,7 @@ export const productivityMetrics: ProductivityMetric[] = [
     whatItMeasures: 'Textual activity in a codebase.',
     whatItCannotTellUs: 'Whether the change is valuable, correct, maintainable, or necessary.',
     limitations: 'An incomplete proxy whose meaning depends on context, language, and the work being performed.',
-    sourceIds: [],
+    sourceIds: ['space-paper'],
   },
   {
     id: 'commits',
@@ -19,7 +19,7 @@ export const productivityMetrics: ProductivityMetric[] = [
     whatItMeasures: 'Version-control activity and change boundaries.',
     whatItCannotTellUs: 'The complexity, quality, collaboration, or outcome of the change.',
     limitations: 'Commit practices vary between teams and workflows, so counts are not directly comparable without context.',
-    sourceIds: [],
+    sourceIds: ['space-paper'],
   },
   {
     id: 'pull-requests',
@@ -29,7 +29,7 @@ export const productivityMetrics: ProductivityMetric[] = [
     whatItMeasures: 'Visible delivery and review activity.',
     whatItCannotTellUs: 'Whether the change produced a valuable or reliable outcome.',
     limitations: 'A count can omit design, discovery, maintenance, incident response, and work that does not become a pull request.',
-    sourceIds: [],
+    sourceIds: ['space-paper'],
   },
   {
     id: 'tickets-closed',
@@ -39,7 +39,7 @@ export const productivityMetrics: ProductivityMetric[] = [
     whatItMeasures: 'Completion activity against a team’s planning system.',
     whatItCannotTellUs: 'The value, difficulty, quality, or learning involved in the work.',
     limitations: 'Ticket size and workflow conventions differ; closure can describe administrative state rather than user or system outcome.',
-    sourceIds: [],
+    sourceIds: ['space-paper'],
   },
   {
     id: 'hours-worked',
@@ -49,7 +49,7 @@ export const productivityMetrics: ProductivityMetric[] = [
     whatItMeasures: 'Time allocation under a particular tracking practice.',
     whatItCannotTellUs: 'Focus, effectiveness, quality, sustainability, or the value of decisions made during that time.',
     limitations: 'Time is not a direct measure of engineering value and can encourage unhealthy optimization when treated as an outcome.',
-    sourceIds: [],
+    sourceIds: ['space-paper'],
   },
 ]
 
@@ -62,7 +62,7 @@ export const productivityDimensions: ProductivityDimension[] = [
     examples: ['Commits', 'Reviews', 'Builds', 'Incidents handled'],
     measurementConsiderations: 'Use activity as context for understanding work, not as a complete definition of productivity.',
     limitations: 'Visible signals can miss planning, learning, design, mentoring, and other less observable work.',
-    sourceIds: [],
+    sourceIds: ['space-paper'],
   },
   {
     id: 'delivery',
@@ -72,7 +72,7 @@ export const productivityDimensions: ProductivityDimension[] = [
     examples: ['Lead time', 'Release flow', 'Change recovery'],
     measurementConsiderations: 'Measure at the system or service level and interpret alongside quality and stability.',
     limitations: 'Delivery signals do not attribute outcomes responsibly to individual developers.',
-    sourceIds: [],
+    sourceIds: ['space-paper'],
   },
   {
     id: 'quality',
@@ -82,7 +82,7 @@ export const productivityDimensions: ProductivityDimension[] = [
     examples: ['Defects', 'Reliability signals', 'Maintainability'],
     measurementConsiderations: 'Pair quality signals with context, time horizon, and the system’s risk profile.',
     limitations: 'Quality is multi-dimensional and often becomes visible after the original change was made.',
-    sourceIds: [],
+    sourceIds: ['space-paper'],
   },
   {
     id: 'experience',

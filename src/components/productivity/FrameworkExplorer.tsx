@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import type { ProductivityFrameworkDetail } from '../../types/research'
+import { researchSources } from '../../data/sources'
+import { Citation } from '../research/Citation'
 
 interface FrameworkExplorerProps {
   frameworks: ProductivityFrameworkDetail[]
@@ -34,9 +36,10 @@ export function FrameworkExplorer({ frameworks }: FrameworkExplorerProps) {
         {selected.dimensions.length > 0 ? (
           <div className="space-dimensions">{selected.dimensions.map((dimension) => <div key={dimension.id}><b>{dimension.shortLabel}</b><span>{dimension.name}</span></div>)}</div>
         ) : (
-          <div className="verification-callout"><span>DORA explorer foundation</span><p>Deployment Frequency · Change Lead Time · Change Failure Rate · Failed Deployment Recovery Time</p><small>TODO: VERIFY SOURCE — confirm current names and definitions against the authoritative DORA research material before publication.</small></div>
+          <div className="verification-callout"><span>DORA software delivery performance metrics</span><p>Change Lead Time · Deployment Frequency · Failed Deployment Recovery Time · Change Fail Rate · Deployment Rework Rate</p><small>Applied at application/service context; this is not an individual productivity score.</small></div>
         )}
         <div className="framework-limitations"><span className="detail-label">Limitations / source status</span><p>{selected.limitations}</p></div>
+        <Citation source={researchSources.find((source) => source.id === selected.sourceIds[0])} />
       </article>
     </div>
   )

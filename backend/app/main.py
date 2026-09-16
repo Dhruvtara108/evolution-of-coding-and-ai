@@ -7,6 +7,8 @@ from .schemas import (
     AICapabilityResponse,
     AIEvidenceResponse,
     AIStageResponse,
+    ResearchClaimResponse,
+    ResearchSourceResponse,
 )
 
 app = FastAPI(title="Evolution of Coding & AI API", version="0.1.0")
@@ -81,3 +83,30 @@ def ai_evidence() -> list[AIEvidenceResponse]:
 @app.get("/api/ai/workflows")
 def ai_workflows() -> dict[str, list[str]]:
     return {"steps": []}
+
+
+@app.get("/api/research", response_model=list[ResearchSourceResponse])
+def research() -> list[ResearchSourceResponse]:
+    return []
+
+
+@app.get("/api/research/categories")
+def research_categories() -> dict[str, list[str]]:
+    return {"categories": []}
+
+
+@app.get("/api/research/claims", response_model=list[ResearchClaimResponse])
+def research_claims() -> list[ResearchClaimResponse]:
+    return []
+
+
+@app.get("/api/research/{research_id}", response_model=ResearchSourceResponse)
+def research_item(research_id: str) -> ResearchSourceResponse:
+    return ResearchSourceResponse(
+        id=research_id,
+        title="TODO: VERIFY SOURCE",
+        authors=[],
+        type="other",
+        category="methodology",
+        verified=False,
+    )

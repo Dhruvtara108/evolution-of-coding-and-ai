@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import type { ProductivityDimension } from '../../types/research'
+import { researchSources } from '../../data/sources'
+import { Citation } from '../research/Citation'
 
 interface DimensionModelProps {
   dimensions: ProductivityDimension[]
@@ -37,6 +39,7 @@ export function DimensionModel({ dimensions }: DimensionModelProps) {
           <div><span className="detail-label">Measurement consideration</span><p>{selected.measurementConsiderations}</p></div>
           <div><span className="detail-label">Limitation</span><p>{selected.limitations}</p></div>
         </div>
+        <Citation source={researchSources.find((source) => source.id === selected.sourceIds[0])} />
       </article>
     </div>
   )

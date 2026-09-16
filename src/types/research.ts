@@ -1,4 +1,6 @@
-export type ResearchStatus = 'verified' | 'needs-verification' | 'synthesis'
+export type ResearchStatus = 'verified' | 'partially-verified' | 'unverified' | 'needs-verification' | 'synthesis'
+export type ResearchCategory = 'historical' | 'productivity' | 'framework' | 'ai-development' | 'ai-product' | 'ai-productivity' | 'ai-quality' | 'ai-workflow' | 'methodology'
+export type EvidenceType = 'controlled-experiment' | 'observational-study' | 'survey' | 'case-study' | 'benchmark' | 'industry-report' | 'vendor-report' | 'literature-review' | 'other'
 
 export interface ResearchSource {
   id: string
@@ -7,8 +9,31 @@ export interface ResearchSource {
   year?: number
   type: 'paper' | 'book' | 'official-framework' | 'industry-study' | 'survey'
   status: ResearchStatus
+  category: ResearchCategory
+  venue?: string
   url?: string
+  doi?: string
+  publisher?: string
+  abstract?: string
+  verified?: boolean
+  verificationNotes?: string
+  accessedAt?: string
   note?: string
+}
+
+export interface ResearchClaim {
+  id: string
+  statement: string
+  sourceId: string
+  evidenceType: EvidenceType
+  category: ResearchCategory
+  context: string
+  population?: string
+  task?: string
+  finding: string
+  limitations: string
+  verificationStatus: ResearchStatus
+  lastVerified?: string
 }
 
 export interface TimelineEra {
@@ -94,7 +119,7 @@ export interface AIEvidence {
   sourceId: string
   claim: string
   context: string
-  studyType: 'controlled-experiment' | 'observational-study' | 'survey' | 'case-study' | 'benchmark' | 'industry-report' | 'vendor-report' | 'literature-review'
+  studyType: EvidenceType
   population: string
   task: string
   finding: string
